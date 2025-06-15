@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express();
 
-const db = require('./db'); 
+const db = require('./db');
+require('dotenv').config(); 
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
@@ -23,6 +24,8 @@ app.use('/', menuItemsRoutes);
 
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/', taskRoutes);
+
+const PORT = process.env.POT || 3001;
 
 app.listen(3001, () => {
     console.log('listening on port 3001');
